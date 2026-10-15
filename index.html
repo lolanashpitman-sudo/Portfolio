@@ -138,6 +138,25 @@ section.wrap{padding-top:clamp(64px,10vw,140px)}
 .build2 .lede{font-size:clamp(17px,1.5vw,20px);line-height:1.45;margin:0 0 16px;font-variation-settings:"wdth" 90}
 @media(max-width:900px){.build2{grid-template-columns:1fr}}
 
+.essay{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:24px clamp(24px,5vw,80px);align-items:start}
+.essay h3{margin:8px 0 0;font-weight:900;text-transform:uppercase;line-height:.88;font-variation-settings:"wdth" 62;font-size:clamp(48px,7vw,104px)}
+.essay h3 em{font-style:normal;color:var(--acid)}
+.essay .lede{font-size:clamp(18px,1.7vw,22px);line-height:1.45;margin:0 0 28px;color:#d6d2cb;font-variation-settings:"wdth" 90;max-width:52ch}
+@media(max-width:800px){.essay{grid-template-columns:1fr}}
+.essays{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,3vw,40px) clamp(14px,2vw,28px);margin-top:clamp(48px,6vw,80px);padding-top:28px;border-top:1px solid var(--line)}
+.post{display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.post .frame{aspect-ratio:16/9;overflow:hidden;background:var(--bg2);border:1px solid var(--line)}
+.post img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .4s}
+.post:hover img,.post:focus-visible img{filter:none;transform:scale(1.04)}
+.post .type{width:100%;height:100%;display:flex;align-items:flex-end;padding:16px;font-weight:900;text-transform:uppercase;line-height:.9;font-variation-settings:"wdth" 62;font-size:clamp(28px,3vw,40px);color:var(--bg);background:var(--acid);transition:background .2s;overflow-wrap:anywhere}
+.post:hover .type{background:var(--ink)}
+.post .meta{display:flex;justify-content:space-between;gap:12px;margin-top:12px}
+.post h4{margin:6px 0 0;font-weight:800;font-variation-settings:"wdth" 80;font-size:clamp(19px,1.6vw,22px);line-height:1.15;text-wrap:balance;transition:color .15s}
+.post:hover h4{color:var(--acid)}
+.post p{margin:6px 0 0;color:var(--dim);font-size:14.5px;line-height:1.4}
+@media(max-width:900px){.essays{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.essays{grid-template-columns:1fr}}
+
 /* ---------- about ---------- */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(24px,5vw,80px)}
 @media(max-width:800px){.about{grid-template-columns:1fr}}
@@ -235,6 +254,19 @@ const PROJECTS = [
     blurb:"Collage, monthly covers, editorial spreads and type experiments in Adobe Creative Cloud and Canva.",
     desc:"Below is my journey with Adobe Creative Cloud and other online platforms such as Canva, blending hands-on work and artistic exploration. Through these experiences, I\u2019ve honed my skills across various design platforms and discovered new creative possibilities." },
 ];
+
+/* Substack essays, newest first. "img" is a file in images/writing/ (leave "" for a type-only card). */
+const ESSAYS = [
+  {"title": "If Fordism Perfected Standardization, Then I Want the Keys to Flora-bama.", "sub": "", "date": "Oct 8, 2026", "url": "https://lolapitman.substack.com/p/if-fordism-perfected-standardization", "img": "if-fordism-perfected-standardization.jpg"},
+  {"title": "Nutella Over Peanut Butter", "sub": "and which type of bread to spread it on", "date": "Sep 28, 2026", "url": "https://lolapitman.substack.com/p/nutella-over-peanut-butter", "img": "nutella-over-peanut-butter.jpg"},
+  {"title": "22 notes for my 22nd.", "sub": "In no apparent order and take all with a grain of salt.", "date": "Sep 9, 2026", "url": "https://lolapitman.substack.com/p/22-notes-for-my-22nd", "img": "22-notes-for-my-22nd.jpg"},
+  {"title": "Building Sandcastles Over the Line in the Sand", "sub": "and it doesn't look good for the horses either", "date": "Aug 23, 2026", "url": "https://lolapitman.substack.com/p/building-sandcastles-over-the-line", "img": "building-sandcastles-over-the-line.jpg"},
+  {"title": "Turning the Water in the Glass to Ice.", "sub": "The Emma to my Cleo, the Cancer to my Virgo.", "date": "Aug 16, 2026", "url": "https://lolapitman.substack.com/p/turning-the-water-in-the-glass-to", "img": "turning-the-water-in-the-glass-to.jpg"},
+  {"title": "Margaritas and Grief. A Holy Combination.", "sub": "", "date": "Jul 29, 2026", "url": "https://lolapitman.substack.com/p/margaritas-and-grief-a-holy-combination", "img": "margaritas-and-grief-a-holy-combination.jpg"},
+  {"title": "How big is New York really?", "sub": "The deli on my corner has no line and my past isn’t going to jump out of that pot hole.", "date": "Jul 23, 2026", "url": "https://lolapitman.substack.com/p/how-big-is-new-york-really", "img": "how-big-is-new-york-really.jpg"},
+  {"title": "#abroadchangedme", "sub": "and im craving a crisp glass of Riesling", "date": "Jul 23, 2026", "url": "https://lolapitman.substack.com/p/abroadchangedme", "img": "abroadchangedme.jpg"},
+  {"title": "Who am I?", "sub": "Probably water, molecules, and my ancestors, sprinkled with crash outs, haircuts, and advice from my loved ones.", "date": "Jul 23, 2026", "url": "https://lolapitman.substack.com/p/who-am-i", "img": "who-am-i.jpg"}
+];
 </script>
 
 <header class="bar">
@@ -244,6 +276,7 @@ const PROJECTS = [
       <a href="#work">Work</a>
       <a href="#ai">AI</a>
       <a href="#about">About</a>
+      <a href="#writing">Writing</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -338,7 +371,7 @@ const PROJECTS = [
       <div class="rise">
         <p class="big">I sit between the <em>studio</em> and the <em>strategy deck</em>: making the work, and figuring out how people find it.</p>
         <p>I’m studying Management and Marketing, with a minor in Design, at Tulane’s Freeman School of Business, and graduate in May 2027. I’ve worked across PR, influencer and experiential marketing at CMM, 28 ROW and Blackbird Labs, and I run marketing for Crawfest, the largest student-run festival in the country.</p>
-        <p>Outside of work I make things with my hands: ceramics, paper, collage. Lately I’ve been building my own tools with Claude Code.</p>
+        <p>Outside of work I make things with my hands: ceramics, paper, collage. Lately I’ve been building my own tools with Claude Code. I write personal essays on my Substack, <a href="#writing"><i>My Mother’s Daughter</i></a>, and share what I’m eating at <a href="https://www.instagram.com/eatswithlol/" target="_blank" rel="noopener">@eatswithlol</a>.</p>
         <div class="facts">
           <div><span class="lab">Based</span><strong>Brooklyn · New Orleans</strong></div>
           <div><span class="lab">Studying</span><strong>Tulane Freeman ’27</strong></div>
@@ -350,10 +383,30 @@ const PROJECTS = [
     </div>
   </section>
 
+  <!-- WRITING -->
+  <section id="writing" class="wrap">
+    <div class="shead">
+      <span class="lab num">04</span>
+      <h2>Writing</h2>
+      <span class="lab">Substack</span>
+    </div>
+    <div class="essay rise">
+      <div>
+        <span class="lab">Personal essays · Ongoing</span>
+        <h3>My Mother’s<br><em>Daughter</em></h3>
+      </div>
+      <div>
+        <p class="lede">My mother’s daughter is a personal essay Substack by me. Born and raised in Brooklyn, I write about the moments that shape who I am: a semester abroad in Vienna, friendships, family, grief, and the uncertainty of life after graduation. Each essay is personal and observational, with plenty of humor and a few contradictions along the way. The name comes from the ways I am my mother’s daughter, in all its forms. New essays are posted regularly.</p>
+        <a class="btn" href="https://substack.com/@lolapitman" target="_blank" rel="noopener">Read on Substack →</a>
+      </div>
+    </div>
+    <div class="essays" id="essays"></div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact" class="wrap contact">
     <div class="shead">
-      <span class="lab num">04</span>
+      <span class="lab num">05</span>
       <h2>Contact</h2>
       <span class="lab">Say hi</span>
     </div>
@@ -361,6 +414,8 @@ const PROJECTS = [
     <p class="lab" style="margin-top:20px">lolanashpitman@gmail.com</p>
     <div class="links">
       <a class="btn ghost" href="https://www.linkedin.com/in/lolapitman/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://substack.com/@lolapitman" target="_blank" rel="noopener">Substack</a>
+      <a class="btn ghost" href="https://www.instagram.com/eatswithlol/" target="_blank" rel="noopener">Food Instagram</a>
       <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
     </div>
   </section>
@@ -419,6 +474,16 @@ grid.innerHTML = PROJECTS.map((p,i) => `
     <p>${esc(p.blurb||p.desc)}</p>
   </a>`).join("");
 $("#count").textContent = `${PROJECTS.length} projects`;
+
+/* essays */
+$("#essays").innerHTML = ESSAYS.map((e,i) => `
+  <a class="post rise" href="${esc(e.url)}" target="_blank" rel="noopener">
+    <div class="frame">${e.img ? `<img src="images/writing/${esc(e.img)}" alt="" loading="lazy">` : `<div class="type">${esc(e.title)}</div>`}</div>
+    <div class="meta"><span class="lab" style="color:var(--acid)">${pad(ESSAYS.length-i)}</span><span class="lab">${esc(e.date)}</span></div>
+    <h4>${esc(e.title)}</h4>
+    ${e.sub ? `<p>${esc(e.sub)}</p>` : ""}
+  </a>`).join("");
+$("#writing .shead .lab:last-child").textContent = `${ESSAYS.length} essays`;
 
 /* filters */
 const kinds = ["all", ...new Set(PROJECTS.map(p => p.kind))];
