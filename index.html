@@ -458,6 +458,26 @@ const ESSAYS = [
 
 <script>
 const $ = s => document.querySelector(s);
+
+/* always start at the top on load/refresh: don't restore old scroll, and drop section anchors like #ai.
+   Project links (#/slug) are kept so they can still be shared. */
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+const clearHash = () => history.replaceState(null, "", location.pathname + location.search);
+if (location.hash && !location.hash.startsWith("#/")) { clearHash(); }
+scrollTo(0, 0);
+
+/* menu + in-page links scroll smoothly without leaving #section in the address bar */
+document.addEventListener("click", e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const h = a.getAttribute("href");
+  if (h.startsWith("#/")) return;                       // project pages use the hash router
+  const el = h === "#top" ? document.body : document.querySelector(h);
+  if (!el) return;
+  e.preventDefault();
+  if (curP) { location.hash = ""; setTimeout(clearHash, 0); return; }   // "← All work": close the project, return to its card
+  requestAnimationFrame(() => { (h === "#top" ? scrollTo({top:0, behavior:"smooth"}) : el.scrollIntoView({behavior:"smooth"})); clearHash(); });
+});
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 /* ticker */
