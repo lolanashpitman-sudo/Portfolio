@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lola Pitman — Art &amp; Projects</title>
 <meta name="description" content="Lola Pitman: artist, marketer and vibe coder.">
+<!-- link previews (iMessage, LinkedIn, Slack, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lola Pitman">
+<meta property="og:title" content="Lola Pitman — Art &amp; Projects">
+<meta property="og:description" content="Artist, marketer and vibe coder. Brand, events, ceramics, writing, and the tools I build.">
+<meta property="og:url" content="https://lolanashpitman-sudo.github.io/Portfolio/">
+<meta property="og:image" content="https://lolanashpitman-sudo.github.io/Portfolio/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lola Pitman">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lolanashpitman-sudo.github.io/Portfolio/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -464,7 +476,10 @@ const $ = s => document.querySelector(s);
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 const clearHash = () => history.replaceState(null, "", location.pathname + location.search);
 if (location.hash && !location.hash.startsWith("#/")) { clearHash(); }
-scrollTo(0, 0);
+const toTop = () => { if (!location.hash.startsWith("#/")) { document.documentElement.style.scrollBehavior = "auto"; scrollTo(0, 0); document.documentElement.style.scrollBehavior = ""; } };
+toTop();
+addEventListener("load", toTop);                                   // after images/fonts settle
+addEventListener("pageshow", e => { if (e.persisted) toTop(); });  // back/forward cache (Safari, phones)
 
 /* menu + in-page links scroll smoothly without leaving #section in the address bar */
 document.addEventListener("click", e => {
