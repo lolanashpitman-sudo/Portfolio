@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lola Pitman — Art &amp; Projects</title>
-<meta name="description" content="Lola Pitman: artist, marketer, and builder working with AI.">
+<meta name="description" content="Lola Pitman: artist, marketer and vibe coder.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{
   --bg:#0c0c0c; --bg2:#151515; --ink:#f1ede6; --dim:#8d8a85; --line:#2a2a2a;
-  --acid:#ff3d14;            /* the one loud color */
+  --acid:#d4587e;            /* the one loud color: raspberry from the rug */
   --disp:"Archivo",Impact,"Arial Narrow",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --gut:clamp(16px,4vw,48px);
@@ -37,7 +37,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 .logo{font-weight:900;font-variation-settings:"wdth" 62;font-size:22px;letter-spacing:.01em;text-decoration:none;text-transform:uppercase}
 .logo span{color:var(--acid)}
 .bar nav{display:flex;gap:clamp(12px,3vw,32px)}
-.bar nav a{text-decoration:none;color:var(--dim);transition:color .15s}
+.bar nav a{text-decoration:none;color:var(--dim);white-space:nowrap;transition:color .15s}
+@media(max-width:480px){.bar nav{gap:10px}.bar nav a{font-size:10.5px;letter-spacing:.02em}}
 .bar nav a:hover{color:var(--ink)}
 
 /* ---------- hero ---------- */
@@ -165,6 +166,7 @@ section.wrap{padding-top:clamp(64px,10vw,140px)}
 .about p{color:#c9c5bf;max-width:62ch}
 .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:28px}
 .facts div{background:var(--bg);padding:16px}
+@media(max-width:560px){.facts{grid-template-columns:1fr}}
 .cv{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--line)}
 .cv li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:2px 12px;padding:12px 0;border-bottom:1px solid var(--line)}
 .cv li .lab{grid-row:span 2;padding-top:3px;color:var(--acid)}
@@ -213,46 +215,50 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;p
 -->
 <script>
 const PROJECTS = [
-  { slug:"ceramics", title:"Ceramics", kind:"studio", cover:"07.jpg",
-    images:["07.jpg","02.jpg","03.jpg","05.jpg","06.jpg","01.jpg"],
-    blurb:"A creative outlet and a connection to my grandfather, who passed his love of clay on to me.",
-    desc:"Fostered by a special bond with my grandfather, my love for ceramics has become both a creative outlet and a meaningful connection to him. Working with clay is a space where I can express myself while staying close to him, even as he navigates the challenges of Alzheimer\u2019s. Through this shared passion, I\u2019ve inherited not only his love for ceramics, but also his enduring wisdom, which continues to shape and inspire me.\n\nEvery time I step into the studio, I\u2019m reminded of him, as the space itself feels just like he does\u2014dependable, constant, and always a place where I belong." },
+  { slug:"crawfest-2027", title:"Crawfest \u201927", kind:"brand", cover:"01.jpg", role:"Marketing Director · In progress",
+    images:["logo.jpg","01.jpg","icons.jpg","stickers.jpg","merch.jpg"],
+    blurb:"In progress: leading a five-person board to take the brand from kitschy to cool, with handcut type and a jazz New Orleans feel.",
+    desc:"As Marketing Director for Crawfest 2027, I lead a five-person board across design, social, PR, web, and photo and video. We\u2019re building the brand guidelines for spring and our fall merch drop, updating the website, and running Instagram on a planned content timeline.\n\nThe creative goal this year is to feel a little less kitschy and a lot more cool, with a jazz-inflected New Orleans vibe. Inspired by the city\u2019s tradition of poster making and folk art, which is messy, often misprinted, and undeniably human, we handcut and scanned our own letterforms and symbols.\n\nBelow are pieces from our fall brand guide: the logo, the icon set, a sticker set for a \u201cnatural takeover\u201d of Tulane\u2019s campus, and our merch design, with \u201cDo You Know What It Means to Miss New Orleans\u201d set as sheet music on the back. This work is in progress and not final." },
+  { slug:"crawfest-2026", title:"Crawfest \u201926", kind:"brand", cover:"01.jpg", role:"PR & Outreach Manager · Crawfest 2026",
+    images:["01.jpg","03.jpg","02.jpg","04.jpg"],
+    blurb:"Months of activations and a five-day \u201cCraw Week\u201d building to a sold-out, 10,000-ticket festival.",
+    desc:"Continuing my work as PR and Outreach Manager, I built on last year\u2019s foundation at one of the nation\u2019s largest student-run festivals to expand our outreach and campus presence. This year, I led the planning and execution of daily \u201cCraw Week\u201d activations in the lead-up to the festival, creating consistent, high-impact moments that generated excitement across Tulane and the New Orleans community. My work focuses on bringing the festival to life through organic, engaging touchpoints that build momentum ahead of a 10,000+ attendee event.\n\nCraw Week ran for the five days leading up to festival Saturday, with multiple activations every day, on top of months of activations beforehand. I worked under the Marketing Director alongside four teammates, and we sold out all 10,000 tickets.\n\nBelow are some of the events and content I used to promote the 2026 festival." },
   { slug:"blackbird-labs", title:"Blackbird Labs", kind:"brand", cover:"04.jpg", role:"Loyalty & Experiential Intern · Summer 2026 · New York",
     images:["05.jpg","01.jpg","03.jpg","04.jpg","02.jpg","06.jpg"],
     blurb:"Loyalty & experiential at the rewards company for people who love restaurants. Brand mockups in Figma.",
-    desc:"During Summer 2026, I was the Loyalty & Experiential Intern at Blackbird Labs in New York. Blackbird is the loyalty company that rewards people who love restaurants, featured in The New York Times, Fast Company and Time for its innovative design and transformative payments experience.\n\nI led brand activation for the F&F x Blackbird Pizza Sessions, a three-dinner partnership series with chefs including Chris Bianco and Wylie Dufresne, and built a go-to-market playbook for a new customer acquisition channel.\n\nBelow are brand and merchandise mockups I designed in Figma: wordmarks, the \u201cRichest Rewards in Dining\u201d mark, staff tees, coasters and napkins." },
-  { slug:"mapping", title:"Mapping", kind:"studio", cover:"06.jpg", role:"New York City",
-    images:["01.jpg","02.jpg","03.jpg","07.jpg","04.jpg","05.jpg","06.jpg"],
-    blurb:"Mapping New York City from collage to four materials to a final relief made entirely of paper.",
-    desc:"This project maps my hometown of New York City through various elements, starting with an exploration of collage. I then identified four categories of land or structure and rendered them using four different materials. The project evolved through several iterations, first using monochromatic materials, and ultimately culminating in a final version made entirely of paper.\n\nThis final iteration explored the translation of land and structure through the manipulation of a single material. Along the way, I created many prototypes, some of which are pictured here." },
-  { slug:"crawfest-2026", title:"Crawfest \u201926", kind:"brand", cover:"01.jpg", role:"Marketing Director · Crawfest at Tulane",
-    images:["01.jpg","03.jpg","02.jpg","04.jpg"],
-    blurb:"Daily \u201cCraw Week\u201d activations building to a 10,000+ person student-run festival.",
-    desc:"Continuing my work with Crawfest, one of the nation\u2019s largest student-run festivals, I\u2019ve built on last year\u2019s foundation to expand our outreach and campus presence. This year, I led the planning and execution of daily \u201cCraw Week\u201d activations in the lead-up to the festival, creating consistent, high-impact moments that generated excitement across Tulane and the New Orleans community. My work focuses on bringing the festival to life through organic, engaging touchpoints that build momentum ahead of a 10,000+ attendee event. Below are some events and content I use to promote the 2026 festival." },
-  { slug:"backpack-iterations", title:"Backpack Iterations", kind:"studio", cover:"01.jpg",
-    images:["04.jpg","05.jpg","01.jpg","02.jpg","03.jpg"],
-    blurb:"From recycled cardboard and duct tape to a final design, across four rounds of iteration.",
-    desc:"I started by designing backpacks with a partner, using only recycled cardboard and duct tape. This initial concept evolved through three subsequent projects, culminating in a final backpack that was detailed through collage and elevation drawings." },
+    desc:"During Summer 2026, I was the Loyalty & Experiential Intern at Blackbird Labs in New York. Blackbird is the loyalty company that rewards people who love restaurants, featured in The New York Times, Fast Company, and Time for its innovative design and transformative payments experience.\n\nI led brand activation for the F&F x Blackbird Pizza Sessions, a three-dinner partnership series with chefs including Chris Bianco and Wylie Dufresne. Each dinner hosted around 125 guests and sold out every time. I handled the run of show, ticketing, timelines, vendors, setup, and walk-throughs. I also built a go-to-market playbook for a new customer acquisition channel.\n\nBelow are brand and merchandise mockups I designed in Figma: wordmarks, the \u201cRichest Rewards in Dining\u201d mark, staff tees, coasters, and napkins." },
   { slug:"cmm", title:"CMM", kind:"brand", cover:"02.jpg", role:"Lifestyle PR & Influencer Marketing Intern · Summer 2024 · New York",
     images:["02.jpg","01.jpg","03.jpg"],
     blurb:"Lifestyle PR & Influencer Marketing Intern, Summer 2024. Work for Hustle Butter and GoGlow.",
     desc:"During Summer 2024, I served as a Lifestyle PR & Influencer Marketing Intern at CMM, an integrated communications agency focused on beauty and lifestyle brands. I supported campaigns for clients such as Dial, Snuggle, European Wax Center, La Roche-Posay, and JooY. Below are examples of my work with Hustle Butter and GoGlow." },
+  { slug:"crawfest-2025", title:"Crawfest \u201925", kind:"brand", cover:"01.jpg", role:"PR & Outreach Manager · Crawfest 2025",
+    images:["01.jpg","03.jpg","02.jpg","05.jpg","04.jpg"],
+    blurb:"PR and partnerships for one of the largest student-run festivals in the country.",
+    desc:"As PR and Outreach Manager for Crawfest 2025, one of the largest student-run festivals in the country, I pitched and secured promotional partnerships with local media and brands, including The Gambit, Aramark, and New Orleans influencers. I partnered with the marketing team on branding campaigns to keep messaging consistent for 10,000+ attendees.\n\nBelow are the menu, posters, ticketing banner, and promos from that year." },
+  { slug:"adobe-creative-and-canva-projects", title:"Collage & Editorial", kind:"brand", cover:"03.jpg",
+    images:["03.jpg","02.jpg","08.jpg","11.jpg","12.jpg","09.jpg","10.jpg","07.jpg","01.jpg","06.jpg","05.jpg","04.jpg"],
+    blurb:"Collage, monthly covers, editorial spreads, and type experiments in Adobe Creative Cloud and Canva.",
+    desc:"Below is my journey with Adobe Creative Cloud and other online platforms such as Canva, blending hands-on work and artistic exploration. Through these experiences, I\u2019ve honed my skills across various design platforms and discovered new creative possibilities." },
+  { slug:"ceramics", title:"Ceramics", kind:"studio", cover:"07.jpg",
+    images:["07.jpg","02.jpg","03.jpg","05.jpg","06.jpg","01.jpg"],
+    blurb:"A creative outlet and a connection to my grandfather, who passed his love of clay on to me.",
+    desc:"Fostered by a special bond with my grandfather, my love for ceramics has become both a creative outlet and a meaningful connection to him. Working with clay gives me a space where I can express myself while staying close to him, even as he navigates the challenges of Alzheimer\u2019s. Through this shared passion, I\u2019ve inherited not only his love for ceramics but also his enduring wisdom, which continues to shape and inspire me.\n\nEvery time I step into the studio, I\u2019m reminded of him, as the space itself feels just like he does\u2014dependable, constant, and always a place where I belong." },
+  { slug:"mapping", title:"Mapping", kind:"studio", cover:"06.jpg", role:"New York City",
+    images:["01.jpg","02.jpg","03.jpg","07.jpg","04.jpg","05.jpg","06.jpg"],
+    blurb:"Mapping New York City from collage to four materials to a final relief made entirely of paper.",
+    desc:"This project maps my hometown of New York City through various elements, starting with an exploration of collage. I then identified four categories of land or structure and rendered them using four different materials. The project evolved through several iterations, first using monochromatic materials, and ultimately culminating in a final version made entirely of paper.\n\nThis final iteration explored the translation of land and structure through the manipulation of a single material. Along the way, I created many prototypes, some of which are pictured here." },
+  { slug:"backpack-iterations", title:"Backpack Iterations", kind:"studio", cover:"01.jpg",
+    images:["04.jpg","05.jpg","01.jpg","02.jpg","03.jpg"],
+    blurb:"From recycled cardboard and duct tape to a final design, across four rounds of iteration.",
+    desc:"I started by designing backpacks with a partner, using only recycled cardboard and duct tape. This initial concept evolved through three subsequent projects, culminating in a final backpack that was detailed through collage and elevation drawings." },
   { slug:"munari-dot", title:"Munari Dot", kind:"studio", cover:"02.jpg",
     images:["03.jpg","02.jpg","01.jpg","04.jpg","07.jpg","08.jpg","05.jpg","06.jpg","09.jpg","10.jpg","11.jpg"],
     blurb:"Ten random dots, read ten different ways: a series on imagination and interpretation.",
-    desc:"The game Munari plays with dots and lines highlights the power of imagination and interpretation. On one page it presented itself to me as a skyline; on another, like a wall of vines, a bowl of my mother\u2019s soup, or a radial plan. In each case, the pattern varies dramatically based on the context and how it\u2019s read. I engaged with this idea creating a series with the same dots but different interpretations. I began with 10 randomly spaced dots." },
-  { slug:"crawfest-2025", title:"Crawfest \u201925", kind:"brand", cover:"01.jpg", role:"PR & Outreach Manager · Aug 2024 \u2013 Apr 2025",
-    images:["01.jpg","03.jpg","02.jpg","05.jpg","04.jpg"],
-    blurb:"PR and partnerships for the largest student-run festival in the country.",
-    desc:"As PR and Outreach Manager for Crawfest 2025, the largest student-run festival in the country, I pitched and secured promotional partnerships with local media and brands, including The Gambit, Aramark and New Orleans influencers. I partnered with the marketing team on branding campaigns to keep messaging consistent for 10,000+ attendees.\n\nBelow are the menu, posters, ticketing banner and promos from that year." },
+    desc:"The game Munari plays with dots and lines highlights the power of imagination and interpretation. On one page, the pattern presented itself to me as a skyline; on others, as a wall of vines, a bowl of my mother\u2019s soup, or a radial plan. In each case, the pattern varies dramatically based on the context and how it\u2019s read. I engaged with this idea by creating a series of drawings with the same dots but different interpretations. I began with ten randomly spaced dots." },
   { slug:"sketchbook", title:"Sketchbook", kind:"studio", cover:"06.jpg",
     images:["06.jpg","04.jpg","03.jpg","02.jpg","05.jpg","01.jpg"],
     blurb:"Groundings from the first minutes of studio, including weekly \u201cSketchbook Hero\u201d prompts.",
-    desc:"My sketchbook grounded me in the first minutes of studio. Below are some of those groundings, including weekly \u201cSketchbook Hero\u201d assignments where we\u2019re given inspiration to create our own interpretations, as well as sketches for current projects.\n\nOne example of a prompt: \u201cIn your sketchbook, illustrate the chapter heading \u2018Week One\u2019 using hand-lettering. Take inspiration from the Paula Scher episode of Abstract: The Art of Design on Netflix and interpret her style.\u201d" },
-  { slug:"adobe-creative-and-canva-projects", title:"Collage & Editorial", kind:"brand", cover:"03.jpg",
-    images:["03.jpg","02.jpg","08.jpg","11.jpg","12.jpg","09.jpg","10.jpg","07.jpg","01.jpg","06.jpg","05.jpg","04.jpg"],
-    blurb:"Collage, monthly covers, editorial spreads and type experiments in Adobe Creative Cloud and Canva.",
-    desc:"Below is my journey with Adobe Creative Cloud and other online platforms such as Canva, blending hands-on work and artistic exploration. Through these experiences, I\u2019ve honed my skills across various design platforms and discovered new creative possibilities." },
+    desc:"My sketchbook grounded me in the first minutes of studio. Below are some of those groundings, including weekly \u201cSketchbook Hero\u201d assignments where we were given inspiration to create our own interpretations, as well as sketches for current projects.\n\nOne example of a prompt: \u201cIn your sketchbook, illustrate the chapter heading \u2018Week One\u2019 using hand-lettering. Take inspiration from the Paula Scher episode of Abstract: The Art of Design on Netflix and interpret her style.\u201d" },
 ];
 
 /* Substack essays, newest first. "img" is a file in images/writing/ (leave "" for a type-only card). */
@@ -273,9 +279,9 @@ const ESSAYS = [
   <div class="wrap">
     <a class="logo" href="#top">LP<span>/</span>26</a>
     <nav class="mono">
-      <a href="#work">Work</a>
-      <a href="#ai">AI</a>
       <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#ai">Vibe Coded</a>
       <a href="#writing">Writing</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -291,17 +297,51 @@ const ESSAYS = [
     </div>
     <h1>Lola<span class="l2">Pitman<em>.</em></span></h1>
     <div class="intro">
-      <span class="lab">↓ Selected projects</span>
-      <p>Artist and marketer. I make things by hand, brand them for the real world, and build my own tools <b>with AI</b>.</p>
+      <span class="lab">↓ About, work &amp; writing</span>
+      <p>I take ideas from first sketch to <b>launch</b>: festivals, campaigns, ceramics, and the tools that keep it all running.</p>
     </div>
   </div>
 
   <div class="ticker" aria-hidden="true"><div id="tick"></div></div>
 
+  <!-- ABOUT -->
+  <section id="about" class="wrap">
+    <div class="shead">
+      <span class="lab num">01</span>
+      <h2>About</h2>
+      <span class="lab">Info</span>
+    </div>
+    <div class="about">
+      <div class="rise">
+        <span class="lab">Short version</span>
+        <ul class="cv">
+          <li><span class="lab">2026–</span><b>Marketing Director</b><span>Crawfest at Tulane</span></li>
+          <li><span class="lab">2026</span><b>Loyalty &amp; Experiential Intern</b><span>Blackbird Labs, NYC</span></li>
+          <li><span class="lab">2025</span><b>Campaign Operations Intern</b><span>28 ROW, NYC</span></li>
+          <li><span class="lab">2024–26</span><b>PR &amp; Outreach Manager</b><span>Crawfest at Tulane</span></li>
+          <li><span class="lab">2024</span><b>Lifestyle PR &amp; Influencer Marketing Intern</b><span>CMM, NYC</span></li>
+          <li><span class="lab">2023–24</span><b>Sports Marketing, Fan Experience</b><span>Tulane Athletics</span></li>
+        </ul>
+      </div>
+      <div class="rise">
+        <p class="big">Whether it’s clay, a campaign, or code, I like seeing an idea <em>all the way through</em>.</p>
+        <p>I’m studying Management and Marketing, with a minor in Design, at Tulane’s Freeman School of Business, and I graduate in May 2027. I’ve worked across PR, influencer, and experiential marketing at CMM, 28 ROW, and Blackbird Labs, and I run marketing for Crawfest, one of the largest student-run festivals in the country.</p>
+        <p>Outside of work, I make things with my hands: ceramics, paper, collage. Lately I’ve been building my own tools with Claude Code. I write personal essays on my Substack, <a href="#writing"><i>My Mother’s Daughter</i></a>. At <a href="https://www.instagram.com/eatswithlol/" target="_blank" rel="noopener">@eatswithlol</a>, I share what I’m eating, what I’m cooking, and what brought me to the table.</p>
+        <div class="facts">
+          <div><span class="lab">Based</span><strong>Brooklyn · New Orleans</strong></div>
+          <div><span class="lab">Studying</span><strong>Tulane University at the A. B. Freeman School of Business</strong></div>
+          <div><span class="lab">Practice</span><strong>Marketing · Design</strong></div>
+          <div><span class="lab">Builds with</span><strong>Claude Code</strong></div>
+        </div>
+        <div class="tools"><span class="lab">Tools</span><span class="chips"><span>Figma</span><span>Adobe Photoshop</span><span>Illustrator</span><span>Canva</span><span>Claude Code</span><span>HTML</span><span>Asana</span><span>Slack</span><span>Excel (MOS)</span></span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- WORK -->
   <section id="work" class="wrap">
     <div class="shead">
-      <span class="lab num">01</span>
+      <span class="lab num">02</span>
       <h2>Work</h2>
       <span class="lab" id="count"></span>
     </div>
@@ -312,8 +352,8 @@ const ESSAYS = [
   <!-- AI -->
   <section id="ai" class="wrap">
     <div class="shead">
-      <span class="lab num">02</span>
-      <h2>Built with AI</h2>
+      <span class="lab num">03</span>
+      <h2>Vibe Coded</h2>
       <span class="lab">2 builds</span>
     </div>
     <div class="case">
@@ -325,11 +365,12 @@ const ESSAYS = [
       <div class="rise">
         <span class="lab">Personal tool · 2026</span>
         <h3>The Morning<br>Board</h3>
-        <p class="lede">A personal front page I designed and built with Claude. Every morning it rebuilds itself with the news, fashion and culture I follow, a mood board pulled from my Pinterest, and a job board that matches openings to my own experience.</p>
+        <p class="lede">A personal front page I designed and built with Claude. Every morning it rebuilds itself with the news, fashion, and culture I follow, a mood board pulled from my Pinterest, and a job board that matches openings to my own experience.</p>
         <ul class="specs">
-          <li><span class="lab">Problem</span><span>Ten tabs every morning: news, runway coverage, job boards, weather. None of it talked to the rest.</span></li>
-          <li><span class="lab">Build</span><span>I directed the design and logic; AI handled code and daily research. A scheduled run rewrites one data block each morning, so the layout stays fixed while the content stays current.</span></li>
+          <li><span class="lab">Problem</span><span>Ten tabs every morning: news, runway coverage, job boards, weather. None of them talked to each other.</span></li>
+          <li><span class="lab">Build</span><span>I vibe coded it: I directed the design and logic while artificial intelligence handled the code and daily research. A scheduled run rewrites one data block each morning, so the layout stays fixed while the content stays current.</span></li>
           <li><span class="lab">Highlights</span><span>Job cards explain <i>why</i> each role fits my background · outfit suggestion from the weather · filterable by field</span></li>
+          <li><span class="lab">Now</span><span>I use it every morning and keep refining it around what I’m really looking for. One known limit: it can’t pull from The New York Times, so I still read that separately.</span></li>
           <li><span class="lab">Tools</span><span class="chips"><span>Claude</span><span>Prompt design</span><span>Scheduled agents</span><span>HTML/CSS/JS</span><span>Pinterest</span></span></li>
         </ul>
         <a class="btn" href="https://lolanashpitman-sudo.github.io/lola-morning-board/" target="_blank" rel="noopener">View it live →</a>
@@ -343,45 +384,18 @@ const ESSAYS = [
         <h3>Materials<br>Request Hub</h3>
       </div>
       <div>
-        <p class="lede">At Blackbird Labs I vibe coded an internal website with Claude Code that automated the request and tracking system for experiential and team materials. It made approving or denying requests, updating inventory counts and reordering items easy. Each request posted automated approve and deny buttons to a private Slack channel, so only approved team members could sign off on removing materials.</p>
-        <span class="chips"><span>Claude Code</span><span>Vibe coding</span><span>Internal tools</span><span>Slack</span></span>
+        <p class="lede">An internal request system I vibe coded with Claude Code so a growing team could stop losing requests in Slack DMs.</p>
+        <ul class="specs">
+          <li><span class="lab">Problem</span><span>Requests for event and branded materials came in through Slack DMs, where they got lost, or in person, where they piled up. A small but growing team needed one organized way to ask.</span></li>
+          <li><span class="lab">Users</span><span>The whole company, about 50 people, uses it whenever they need materials for an event or internal branded merch.</span></li>
+          <li><span class="lab">Build</span><span>I met with my manager to define the functions she needed and how it should look, then built it: submit a request, approve or deny it, update inventory counts, and reorder items.</span></li>
+          <li><span class="lab">Approvals</span><span>Each request posts approve and deny buttons to a private Slack channel, so only approved team members can sign off on removing materials.</span></li>
+          <li><span class="lab">Tools</span><span class="chips"><span>Claude Code</span><span>Vibe coding</span><span>Internal tools</span><span>Slack</span></span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="wrap">
-    <div class="shead">
-      <span class="lab num">03</span>
-      <h2>About</h2>
-      <span class="lab">Info</span>
-    </div>
-    <div class="about">
-      <div class="rise">
-        <span class="lab">Short version</span>
-        <ul class="cv">
-          <li><span class="lab">2025—</span><b>Marketing Director</b><span>Crawfest at Tulane</span></li>
-          <li><span class="lab">2026</span><b>Loyalty &amp; Experiential Intern</b><span>Blackbird Labs, NYC</span></li>
-          <li><span class="lab">2025</span><b>Campaign Operations Intern</b><span>28 ROW, NYC</span></li>
-          <li><span class="lab">2024—25</span><b>PR &amp; Outreach Manager</b><span>Crawfest at Tulane</span></li>
-          <li><span class="lab">2024</span><b>Lifestyle PR &amp; Influencer Marketing Intern</b><span>CMM, NYC</span></li>
-          <li><span class="lab">2023—24</span><b>Sports Marketing, Fan Experience</b><span>Tulane Athletics</span></li>
-        </ul>
-      </div>
-      <div class="rise">
-        <p class="big">I sit between the <em>studio</em> and the <em>strategy deck</em>: making the work, and figuring out how people find it.</p>
-        <p>I’m studying Management and Marketing, with a minor in Design, at Tulane’s Freeman School of Business, and graduate in May 2027. I’ve worked across PR, influencer and experiential marketing at CMM, 28 ROW and Blackbird Labs, and I run marketing for Crawfest, the largest student-run festival in the country.</p>
-        <p>Outside of work I make things with my hands: ceramics, paper, collage. Lately I’ve been building my own tools with Claude Code. I write personal essays on my Substack, <a href="#writing"><i>My Mother’s Daughter</i></a>, and share what I’m eating at <a href="https://www.instagram.com/eatswithlol/" target="_blank" rel="noopener">@eatswithlol</a>.</p>
-        <div class="facts">
-          <div><span class="lab">Based</span><strong>Brooklyn · New Orleans</strong></div>
-          <div><span class="lab">Studying</span><strong>Tulane Freeman ’27</strong></div>
-          <div><span class="lab">Practice</span><strong>Marketing · Design</strong></div>
-          <div><span class="lab">Builds with</span><strong>Claude Code</strong></div>
-        </div>
-        <div class="tools"><span class="lab">Tools</span><span class="chips"><span>Figma</span><span>Adobe Photoshop</span><span>Illustrator</span><span>Canva</span><span>Claude Code</span><span>HTML</span><span>Asana</span><span>Slack</span><span>Excel (MOS)</span></span></div>
-      </div>
-    </div>
-  </section>
 
   <!-- WRITING -->
   <section id="writing" class="wrap">
@@ -396,7 +410,7 @@ const ESSAYS = [
         <h3>My Mother’s<br><em>Daughter</em></h3>
       </div>
       <div>
-        <p class="lede">My mother’s daughter is a personal essay Substack by me. Born and raised in Brooklyn, I write about the moments that shape who I am: a semester abroad in Vienna, friendships, family, grief, and the uncertainty of life after graduation. Each essay is personal and observational, with plenty of humor and a few contradictions along the way. The name comes from the ways I am my mother’s daughter, in all its forms. New essays are posted regularly.</p>
+        <p class="lede"><i>My Mother’s Daughter</i> is a personal essay Substack written by me. Born and raised in Brooklyn, I write about the moments that shape who I am: a semester abroad in Vienna, friendships, family, grief, and the uncertainty of life after graduation. Each essay is personal and observational, with plenty of humor and a few contradictions along the way. The name comes from the ways I am my mother’s daughter, in all its forms. New essays are posted regularly.</p>
         <a class="btn" href="https://substack.com/@lolapitman" target="_blank" rel="noopener">Read on Substack →</a>
       </div>
     </div>
@@ -424,7 +438,7 @@ const ESSAYS = [
 <footer>
   <div class="wrap lab">
     <span>© <span id="yr"></span> Lola Pitman</span>
-    <span>Designed &amp; built by me, with AI</span>
+    <span>Designed &amp; vibe coded by me</span>
   </div>
 </footer>
 
@@ -447,7 +461,7 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 /* ticker */
-const words = ["Ceramics","Brand identity","Paper","Events","Built with AI","Drawing","Campaigns","Lola Pitman"];
+const words = ["Ceramics","Brand identity","Paper","Events","Vibe Coded","Drawing","Campaigns","Lola Pitman"];
 $("#tick").innerHTML = [...words, ...words, ...words, ...words].map(w => `<span>${w}</span><span>✶</span>`).join("");
 
 /* clock + year */
