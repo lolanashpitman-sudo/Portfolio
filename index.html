@@ -84,17 +84,12 @@ section.wrap{padding-top:clamp(64px,10vw,140px)}
 .filters button{font:inherit;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.04em;background:none;color:var(--dim);border:1px solid var(--line);padding:7px 12px;cursor:pointer;border-radius:0}
 .filters button:hover{color:var(--ink);border-color:var(--ink)}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(28px,4vw,56px) clamp(14px,2vw,28px)}
-.proj{grid-column:span 6;display:block;text-decoration:none;color:inherit;position:relative}
-.proj:nth-child(4n+1){grid-column:span 7}
-.proj:nth-child(4n+2){grid-column:span 5;margin-top:clamp(0px,8vw,120px)}
-.proj:nth-child(4n+3){grid-column:span 5}
-.proj:nth-child(4n+4){grid-column:span 7;margin-top:clamp(0px,5vw,72px)}
-@media(max-width:760px){.grid{grid-template-columns:1fr}.proj,.proj:nth-child(n){grid-column:1/-1;margin-top:0}}
-.proj .frame{overflow:hidden;background:var(--bg2);aspect-ratio:4/3;position:relative}
-.proj:nth-child(4n+2) .frame,.proj:nth-child(4n+3) .frame{aspect-ratio:4/5}
-.proj img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .4s;filter:grayscale(1) contrast(1.05)}
-.proj:hover img,.proj:focus-visible img{transform:scale(1.04);filter:none}
+.grid{display:flex;gap:clamp(14px,2vw,28px);align-items:flex-start}
+.grid .col{flex:1;min-width:0;display:flex;flex-direction:column;gap:clamp(36px,4vw,56px)}
+.proj{display:block;text-decoration:none;color:inherit;position:relative}
+.proj .frame{overflow:hidden;background:var(--bg2);position:relative}
+.proj img{width:100%;height:auto;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.proj:hover img,.proj:focus-visible img{transform:scale(1.03)}
 .proj .count{position:absolute;top:12px;right:12px;background:var(--bg);padding:4px 8px}
 .proj .row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:baseline;padding-top:12px;border-top:1px solid var(--line);margin-top:12px}
 .proj .n{color:var(--acid)}
@@ -159,8 +154,8 @@ section.wrap{padding-top:clamp(64px,10vw,140px)}
 .essays{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,3vw,40px) clamp(14px,2vw,28px);margin-top:clamp(48px,6vw,80px);padding-top:28px;border-top:1px solid var(--line)}
 .post{display:flex;flex-direction:column;text-decoration:none;color:inherit}
 .post .frame{aspect-ratio:16/9;overflow:hidden;background:var(--bg2);border:1px solid var(--line)}
-.post img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .4s}
-.post:hover img,.post:focus-visible img{filter:none;transform:scale(1.04)}
+.post img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.post:hover img,.post:focus-visible img{transform:scale(1.04)}
 .post .type{width:100%;height:100%;display:flex;align-items:flex-end;padding:16px;font-weight:900;text-transform:uppercase;line-height:.9;font-variation-settings:"wdth" 62;font-size:clamp(28px,3vw,40px);color:var(--bg);background:var(--acid);transition:background .2s;overflow-wrap:anywhere}
 .post:hover .type{background:var(--ink)}
 .post .meta{display:flex;justify-content:space-between;gap:12px;margin-top:12px}
@@ -231,14 +226,14 @@ const PROJECTS = [
     images:["logo.jpg","01.jpg","icons.jpg","stickers.jpg","merch.jpg"],
     blurb:"In progress: leading a five-person board to take the brand from kitschy to cool, with handcut type and a jazz New Orleans feel.",
     desc:"As Marketing Director for Crawfest 2027, I lead a five-person board across design, social, PR, web, and photo and video. We\u2019re building the brand guidelines for spring and our fall merch drop, updating the website, and running Instagram on a planned content timeline.\n\nThe creative goal this year is to feel a little less kitschy and a lot more cool, with a jazz-inflected New Orleans vibe. Inspired by the city\u2019s tradition of poster making and folk art, which is messy, often misprinted, and undeniably human, we handcut and scanned our own letterforms and symbols.\n\nBelow are pieces from our fall brand guide: the logo, the icon set, a sticker set for a \u201cnatural takeover\u201d of Tulane\u2019s campus, and our merch design, with \u201cDo You Know What It Means to Miss New Orleans\u201d set as sheet music on the back. This work is in progress and not final." },
+  { slug:"blackbird-labs", title:"Blackbird Labs", kind:"brand", cover:"cover.jpg", role:"Loyalty & Experiential Intern · Summer 2026 · New York",
+    images:["05.jpg","01.jpg","03.jpg","04.jpg","02.jpg","06.jpg"],
+    blurb:"Loyalty & experiential at the rewards company for people who love restaurants. Brand mockups in Figma.",
+    desc:"During Summer 2026, I was the Loyalty & Experiential Intern at Blackbird Labs in New York. Blackbird is the loyalty company that rewards people who love restaurants, featured in The New York Times, Fast Company, and Time for its innovative design and transformative payments experience.\n\nI led brand activation for the F&F x Blackbird Pizza Sessions, a three-dinner partnership series with chefs including Chris Bianco and Wylie Dufresne. Each dinner hosted around 125 guests and sold out every time. I handled the run of show, ticketing, timelines, vendors, setup, and walk-throughs. I also built a go-to-market playbook for a new customer acquisition channel.\n\nBelow are brand and merchandise mockups I designed in Figma: wordmarks, the \u201cRichest Rewards in Dining\u201d mark, staff tees, coasters, and napkins." },
   { slug:"crawfest-2026", title:"Crawfest \u201926", kind:"brand", cover:"01.jpg", role:"PR & Outreach Manager · Crawfest 2026",
     images:["01.jpg","03.jpg","02.jpg","04.jpg"],
     blurb:"Months of activations and a five-day \u201cCraw Week\u201d building to a sold-out, 10,000-ticket festival.",
     desc:"Continuing my work as PR and Outreach Manager, I built on last year\u2019s foundation at one of the nation\u2019s largest student-run festivals to expand our outreach and campus presence. This year, I led the planning and execution of daily \u201cCraw Week\u201d activations in the lead-up to the festival, creating consistent, high-impact moments that generated excitement across Tulane and the New Orleans community. My work focuses on bringing the festival to life through organic, engaging touchpoints that build momentum ahead of a 10,000+ attendee event.\n\nCraw Week ran for the five days leading up to festival Saturday, with multiple activations every day, on top of months of activations beforehand. I worked under the Marketing Director alongside four teammates, and we sold out all 10,000 tickets.\n\nBelow are some of the events and content I used to promote the 2026 festival." },
-  { slug:"blackbird-labs", title:"Blackbird Labs", kind:"brand", cover:"04.jpg", role:"Loyalty & Experiential Intern · Summer 2026 · New York",
-    images:["05.jpg","01.jpg","03.jpg","04.jpg","02.jpg","06.jpg"],
-    blurb:"Loyalty & experiential at the rewards company for people who love restaurants. Brand mockups in Figma.",
-    desc:"During Summer 2026, I was the Loyalty & Experiential Intern at Blackbird Labs in New York. Blackbird is the loyalty company that rewards people who love restaurants, featured in The New York Times, Fast Company, and Time for its innovative design and transformative payments experience.\n\nI led brand activation for the F&F x Blackbird Pizza Sessions, a three-dinner partnership series with chefs including Chris Bianco and Wylie Dufresne. Each dinner hosted around 125 guests and sold out every time. I handled the run of show, ticketing, timelines, vendors, setup, and walk-throughs. I also built a go-to-market playbook for a new customer acquisition channel.\n\nBelow are brand and merchandise mockups I designed in Figma: wordmarks, the \u201cRichest Rewards in Dining\u201d mark, staff tees, coasters, and napkins." },
   { slug:"cmm", title:"CMM", kind:"brand", cover:"02.jpg", role:"Lifestyle PR & Influencer Marketing Intern · Summer 2024 · New York",
     images:["02.jpg","01.jpg","03.jpg"],
     blurb:"Lifestyle PR & Influencer Marketing Intern, Summer 2024. Work for Hustle Butter and GoGlow.",
@@ -512,7 +507,7 @@ const src = (p,f) => `images/${p.slug}/${f}`;
 grid.innerHTML = PROJECTS.map((p,i) => `
   <a class="proj rise" href="#/${esc(p.slug)}" data-kind="${esc(p.kind)}">
     <div class="frame">
-      <img src="${src(p, p.cover||p.images[0])}" alt="${esc(p.title)}, cover image" loading="${i<2?"eager":"lazy"}">
+      <img src="${src(p, p.cover||p.images[0])}" alt="${esc(p.title)}, cover image">
       <span class="count mono">${pad(p.images.length)} imgs</span>
     </div>
     <div class="row">
@@ -523,6 +518,21 @@ grid.innerHTML = PROJECTS.map((p,i) => `
     <p>${esc(p.blurb||p.desc)}</p>
   </a>`).join("");
 $("#count").textContent = `${PROJECTS.length} projects`;
+
+/* masonry that keeps reading order: each visible card goes into the currently shortest column */
+const cards = [...grid.children];
+function layoutGrid(){
+  const n = innerWidth > 1000 ? 3 : innerWidth > 640 ? 2 : 1;
+  const cols = Array.from({length:n}, () => Object.assign(document.createElement("div"), {className:"col"}));
+  grid.replaceChildren(...cols);
+  cards.forEach(c => {
+    if (c.hidden) { cols[0].appendChild(c); return; }
+    const k = cols.reduce((m, col, j) => col.offsetHeight < cols[m].offsetHeight ? j : m, 0);
+    cols[k].appendChild(c);
+  });
+}
+layoutGrid();
+Promise.all(cards.map(c => c.querySelector("img").decode().catch(()=>{}))).then(layoutGrid);
 
 /* essays */
 $("#essays").innerHTML = ESSAYS.map((e,i) => `
@@ -540,7 +550,8 @@ $("#filters").innerHTML = kinds.map(k => `<button data-f="${esc(k)}" aria-presse
 $("#filters").addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
   document.querySelectorAll("#filters button").forEach(x => x.setAttribute("aria-pressed", x===b));
-  document.querySelectorAll(".proj").forEach(p => p.hidden = !(b.dataset.f==="all" || p.dataset.kind===b.dataset.f));
+  cards.forEach(p => p.hidden = !(b.dataset.f==="all" || p.dataset.kind===b.dataset.f));
+  layoutGrid();
 });
 
 /* project page: #/slug */
@@ -576,7 +587,7 @@ function layoutShots(shots){
   });
   shots.replaceChildren(...cols);
 }
-let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { const s = $("#pvbody .shots"); if (s && s._btns) layoutShots(s); }, 150); });
+let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { layoutGrid(); const s = $("#pvbody .shots"); if (s && s._btns) layoutShots(s); }, 150); });
 addEventListener("hashchange", () => { route(); if (!curP) document.title = "Lola Pitman — Art & Projects"; });
 $("#pvbody").addEventListener("click", e => { const b = e.target.closest("button[data-j]"); if (b) openLb(+b.dataset.j); });
 
