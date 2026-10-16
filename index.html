@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lola Pitman — Art &amp; Projects</title>
+<title>Lola Pitman — Portfolio</title>
 <meta name="description" content="Lola Pitman: artist, marketer and vibe coder.">
 <!-- link previews (iMessage, LinkedIn, Slack, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lola Pitman">
-<meta property="og:title" content="Lola Pitman — Art &amp; Projects">
+<meta property="og:title" content="Lola Pitman — Portfolio">
 <meta property="og:description" content="Artist, marketer and vibe coder. Brand, events, ceramics, writing, and the tools I build.">
 <meta property="og:url" content="https://lolanashpitman-sudo.github.io/Portfolio/">
 <meta property="og:image" content="https://lolanashpitman-sudo.github.io/Portfolio/og-image.jpg">
@@ -589,7 +589,7 @@ function layoutShots(shots){
   shots.replaceChildren(...cols);
 }
 let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { layoutGrid(); const s = $("#pvbody .shots"); if (s && s._btns) layoutShots(s); }, 150); });
-addEventListener("hashchange", () => { route(); if (!curP) document.title = "Lola Pitman — Art & Projects"; });
+addEventListener("hashchange", () => { route(); if (!curP) document.title = "Lola Pitman — Portfolio"; });
 $("#pvbody").addEventListener("click", e => { const b = e.target.closest("button[data-j]"); if (b) openLb(+b.dataset.j); });
 
 /* lightbox (inside a project) */
