@@ -78,7 +78,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 @media(min-width:721px){body[data-page="home"] .navpills{display:none}}
 
 /* short bio on the homepage */
-.homebio{grid-column:2;max-width:60ch}
+.homebio{grid-column:2;justify-self:end;width:100%;max-width:560px}
 .hero .intro .homebio p{margin:0 0 .9em;max-width:60ch;font-size:clamp(15px,1.1vw,17px);line-height:1.55;color:#c9c5bf;font-variation-settings:"wdth" 100}
 .hero .intro .homebio p:last-child{margin-bottom:0}
 .homebio a{color:var(--ink)}
@@ -97,23 +97,11 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 .pill.ink:hover{background:var(--ink);color:#0c0c0c}
 @media(prefers-reduced-motion:reduce){.pill,.pill i{transition:none}}
 
-/* home = exactly one screen: everything scales with the window height, the ticker sits at the bottom */
-body[data-page="home"] main{min-height:calc(100svh - 57px);display:flex;flex-direction:column}
-body[data-page="home"] .hero{flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:clamp(12px,2.5vh,40px);padding-bottom:clamp(12px,2.5vh,40px)}
-body[data-page="home"] .hero .meta{margin-bottom:clamp(6px,1.6vh,22px)}
-body[data-page="home"] .hero h1{font-size:min(21vw,19vh,300px)}
-body[data-page="home"] .hero .intro{margin-top:clamp(8px,1.8vh,32px);align-items:start}
-body[data-page="home"] .hero .intro .homebio .lead{font-size:clamp(16px,min(1.9vw,2.6vh),28px)}
-body[data-page="home"] .hero .intro .homebio p{font-size:clamp(12.5px,min(1.08vw,1.72vh),17px);line-height:1.5}
-body[data-page="home"] .ticker{margin-top:0}
-body[data-page="home"] footer{display:none}
-@media(max-width:720px){
-  body[data-page="home"] .hero h1{font-size:min(21vw,16vh)}
-  body[data-page="home"] .hero .intro .homebio p{font-size:clamp(12.5px,1.85vh,15px)}
-  body[data-page="home"] .hero .intro .homebio .lead{font-size:clamp(17px,2.6vh,22px)}
-  body[data-page="home"] .homenav{display:none}
-  body[data-page="home"] #clock{display:none}
-}
+/* home: original sizing (big name, comfortable text; the page can scroll) */
+body[data-page="home"] .hero .intro{align-items:start}
+body[data-page="home"] .hero h1{font-size:clamp(68px,14.5vw,210px)}
+body[data-page="home"] .hero{padding-top:clamp(16px,2.5vw,32px)}
+@media(max-width:720px){ body[data-page="home"] .homenav{display:none} }
 
 /* pages: home shows hero + pills; every other route shows one section */
 body:not([data-page="home"]) .hero,body:not([data-page="home"]) .pills,body:not([data-page="home"]) .ticker{display:none}
