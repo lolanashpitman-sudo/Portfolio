@@ -65,6 +65,13 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 .hero .intro p b{font-weight:800;color:var(--acid)}
 @media(max-width:720px){.hero .intro{grid-template-columns:1fr}}
 
+/* short bio on the homepage */
+.homebio{grid-column:2;max-width:60ch}
+.hero .intro .homebio p{margin:0 0 .9em;max-width:60ch;font-size:clamp(15px,1.1vw,17px);line-height:1.55;color:#c9c5bf;font-variation-settings:"wdth" 100}
+.hero .intro .homebio p:last-child{margin-bottom:0}
+.homebio a{color:var(--ink)}
+@media(max-width:720px){.homebio{grid-column:1}}
+
 /* home pills */
 .pills{display:flex;flex-wrap:wrap;gap:clamp(10px,1.2vw,16px);margin-top:clamp(32px,5vw,64px)}
 .pill{flex:1 1 200px;display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--c);color:#0c0c0c;text-decoration:none;border-radius:999px;padding:clamp(18px,2vw,26px) clamp(24px,2.6vw,36px);font-weight:800;font-variation-settings:"wdth" 80;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(20px,2vw,28px);line-height:1;transition:transform .2s cubic-bezier(.2,.7,.2,1),filter .2s}
@@ -78,7 +85,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 
 /* home fits one screen: name scales with the viewport's height as well as its width */
 body[data-page="home"] .hero{padding-top:clamp(20px,3.5vh,48px)}
-body[data-page="home"] .hero h1{font-size:min(21vw,25vh,330px)}
+body[data-page="home"] .hero h1{font-size:min(21vw,20vh,330px)}
 body[data-page="home"] .hero .meta{margin-bottom:clamp(10px,2vh,24px)}
 body[data-page="home"] .hero .intro{margin-top:clamp(16px,3vh,36px)}
 body[data-page="home"] .pills{margin-top:clamp(20px,4vh,48px)}
@@ -350,6 +357,10 @@ const ESSAYS = [
     <div class="intro">
       <span class="lab">Choose a section ↓</span>
       <p>I work with ideas from first sketch to <b>launch</b>: festivals, campaigns, ceramics, and the tools that keep it all running.</p>
+      <div class="homebio">
+        <p>I’m studying Management and Marketing, with a minor in Design, at Tulane’s Freeman School of Business, and I graduate in May 2027. I’ve worked across PR, influencer, and experiential marketing at CMM, 28 ROW, and Blackbird Labs, and I run marketing for Crawfest, one of the largest student-run festivals in the country.</p>
+        <p>Outside of work, I make things with my hands: ceramics, paper, collage. Lately I’ve been building my own tools with Claude Code. I write personal essays on my Substack, <a href="#/writing"><i>My Mother’s Daughter</i></a>. At <a href="https://www.instagram.com/eatswithlol/" target="_blank" rel="noopener">@eatswithlol</a>, I share what I’m eating, what I’m cooking, and what brought me to the table.</p>
+      </div>
     </div>
   </div>
 
