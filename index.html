@@ -63,15 +63,16 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 @media(max-width:720px){.hero .intro{grid-template-columns:1fr}}
 
 /* homepage section index (left column, next to the bio) */
-.homenav{display:flex;flex-direction:column;border-top:1px solid var(--line);align-self:start;max-width:440px}
-.homenav a{display:grid;grid-template-columns:14px auto 1fr auto;align-items:center;gap:14px;padding:clamp(9px,1.5vh,14px) 2px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);transition:padding .2s}
-.homenav i{width:12px;height:12px;border-radius:50%;background:var(--c)}
-.homenav b{font-weight:800;font-variation-settings:"wdth" 80;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(17px,min(1.7vw,2.6vh),24px);line-height:1}
-.homenav .lab{justify-self:end;text-align:right}
-.homenav em{font-style:normal;color:var(--dim);transition:transform .2s,color .2s}
-.homenav a:hover,.homenav a:focus-visible{padding-left:10px}
+.homenav{display:flex;flex-direction:column;align-self:start;width:max-content;max-width:100%}
+.homenav a{display:flex;align-items:baseline;gap:12px;padding:clamp(7px,0.9vw,11px) 0;text-decoration:none;color:var(--ink);border-bottom:1px solid rgba(255,255,255,.06);transition:transform .2s}
+.homenav a:first-child{border-top:1px solid rgba(255,255,255,.06)}
+.homenav i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--c);align-self:center}
+.homenav b{font-weight:800;font-variation-settings:"wdth" 80;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(20px,1.9vw,28px);line-height:1;transition:color .2s}
+.homenav .lab{font-size:11px;color:var(--dim)}
+.homenav em{font-style:normal;color:var(--c);opacity:0;transform:translateX(-6px);transition:opacity .2s,transform .2s}
+.homenav a:hover,.homenav a:focus-visible{transform:translateX(6px)}
 .homenav a:hover b,.homenav a:focus-visible b{color:var(--c)}
-.homenav a:hover em,.homenav a:focus-visible em{transform:translateX(4px);color:var(--c)}
+.homenav a:hover em,.homenav a:focus-visible em{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.homenav a,.homenav em{transition:none}}
 
 /* computer homepage: the index beside the bio replaces the top pills (phones keep the pills) */
@@ -101,6 +102,21 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 body[data-page="home"] .hero .intro{align-items:start}
 body[data-page="home"] .hero h1{font-size:clamp(68px,14.5vw,210px)}
 body[data-page="home"] .hero{padding-top:clamp(16px,2.5vw,32px)}
+/* home layout: name + bio side by side, section menu in a row underneath both */
+body[data-page="home"] .hero{display:grid;grid-template-columns:auto minmax(280px,1fr);grid-template-areas:"meta meta" "name bio" "nav nav";column-gap:clamp(32px,5vw,80px)}
+body[data-page="home"] .hero .meta{grid-area:meta}
+body[data-page="home"] .hero h1{grid-area:name;align-self:center}
+body[data-page="home"] .hero h1 .l2{padding-left:clamp(16px,5vw,90px)}
+body[data-page="home"] .hero .intro{display:contents}
+body[data-page="home"] .homebio{grid-area:bio;align-self:center;justify-self:end;max-width:540px}
+body[data-page="home"] .homenav{grid-area:nav;flex-direction:row;flex-wrap:nowrap;justify-content:space-between;width:100%;max-width:none;gap:16px;margin-top:clamp(28px,4vw,56px);padding-top:clamp(14px,1.6vw,20px);border-top:1px solid var(--line)}
+body[data-page="home"] .homenav a,body[data-page="home"] .homenav a:first-child{border:0;padding:6px 0}
+body[data-page="home"] .homenav a:hover,body[data-page="home"] .homenav a:focus-visible{transform:translateY(-2px)}
+@media(max-width:1280px){ body[data-page="home"] .homenav .lab{display:none} }
+@media(max-width:900px){
+  body[data-page="home"] .hero{grid-template-columns:1fr;grid-template-areas:"meta" "name" "bio" "nav"}
+  body[data-page="home"] .homebio{justify-self:start;margin-top:clamp(20px,4vw,32px)}
+}
 @media(max-width:720px){ body[data-page="home"] .homenav{display:none} }
 
 /* pages: home shows hero + pills; every other route shows one section */
