@@ -105,19 +105,45 @@ body[data-page="home"] .hero{padding-top:clamp(16px,2.5vw,32px)}
 /* home layout: name + bio side by side, section menu in a row underneath both */
 body[data-page="home"] .hero{display:grid;grid-template-columns:auto minmax(280px,1fr);grid-template-areas:"meta meta" "name bio" "nav nav";column-gap:clamp(32px,5vw,80px)}
 body[data-page="home"] .hero .meta{grid-area:meta}
-body[data-page="home"] .hero h1{grid-area:name;align-self:center}
+body[data-page="home"] .hero h1{grid-area:name;align-self:start}
 body[data-page="home"] .hero h1 .l2{padding-left:clamp(16px,5vw,90px)}
 body[data-page="home"] .hero .intro{display:contents}
-body[data-page="home"] .homebio{grid-area:bio;align-self:center;justify-self:end;max-width:540px}
+body[data-page="home"] .homebio{grid-area:bio;align-self:start;justify-self:end;max-width:540px}
 body[data-page="home"] .homenav{grid-area:nav;flex-direction:row;flex-wrap:nowrap;justify-content:space-between;width:100%;max-width:none;gap:16px;margin-top:clamp(28px,4vw,56px);padding-top:clamp(14px,1.6vw,20px);border-top:1px solid var(--line)}
 body[data-page="home"] .homenav a,body[data-page="home"] .homenav a:first-child{border:0;padding:6px 0}
 body[data-page="home"] .homenav a:hover,body[data-page="home"] .homenav a:focus-visible{transform:translateY(-2px)}
-@media(max-width:1280px){ body[data-page="home"] .homenav .lab{display:none} }
+body[data-page="home"] .homenav a{flex:none}
+body[data-page="home"] .homenav b,body[data-page="home"] .homenav .lab{white-space:nowrap}
+@media(max-width:1600px){ body[data-page="home"] .homenav .lab{display:none} }
 @media(max-width:900px){
-  body[data-page="home"] .hero{grid-template-columns:1fr;grid-template-areas:"meta" "name" "bio" "nav"}
+  body[data-page="home"] .hero{grid-template-columns:1fr;grid-template-areas:"." "meta" "name" "bio" "." "nav" "."}
   body[data-page="home"] .homebio{justify-self:start;margin-top:clamp(20px,4vw,32px)}
 }
 @media(max-width:720px){ body[data-page="home"] .homenav{display:none} }
+
+/* home always fits one screen: sizes follow the window's height as well as its width */
+body[data-page="home"] main{min-height:calc(100svh - 57px);display:flex;flex-direction:column}
+body[data-page="home"] .hero{flex:1;min-height:0;width:100%;box-sizing:border-box;padding-top:clamp(12px,2.2vh,28px);padding-bottom:0;grid-template-rows:auto minmax(16px,1fr) auto minmax(16px,1fr) auto minmax(16px,1fr);grid-template-areas:"meta meta" ". ." "name bio" ". ." "nav nav" ". .";align-content:stretch}
+body[data-page="home"] .hero .meta{margin-bottom:0}
+body[data-page="home"] .hero h1{font-size:min(14.5vw,27vh,210px)}
+body[data-page="home"] .hero .intro .homebio .lead{font-size:clamp(15px,min(1.9vw,3.1vh),30px)}
+body[data-page="home"] .hero .intro .homebio p{font-size:clamp(11.5px,min(1.08vw,1.95vh),17px);line-height:1.5}
+body[data-page="home"] .homenav{align-self:center;margin:0;padding-top:clamp(8px,1.4vh,18px)}
+body[data-page="home"] .homenav b{font-size:clamp(15px,min(1.9vw,3.2vh),28px)}
+body[data-page="home"] .homenav a{padding:clamp(2px,.6vh,6px) 0}
+body[data-page="home"] .ticker{margin-top:0;flex:none}
+body[data-page="home"] .ticker div{padding:clamp(6px,1.3vh,12px) 0;font-size:clamp(14px,min(2.4vw,3.4vh),28px)}
+body[data-page="home"] footer{display:none}
+@media(max-width:900px){
+  body[data-page="home"] .hero{grid-template-columns:1fr;grid-template-areas:"meta" "." "name" "bio" "." "nav" ".";grid-template-rows:auto minmax(16px,1fr) auto auto minmax(16px,1fr) auto minmax(16px,1fr);align-content:stretch}
+  body[data-page="home"] .hero h1{font-size:min(21vw,17vh)}
+  body[data-page="home"] .homebio{align-self:start}
+}
+@media(max-width:720px){
+  body[data-page="home"] .hero .intro .homebio p{font-size:clamp(11.5px,1.85vh,15px)}
+  body[data-page="home"] .hero .intro .homebio .lead{font-size:clamp(16px,2.6vh,22px)}
+  body[data-page="home"] #clock{display:none}
+}
 
 /* pages: home shows hero + pills; every other route shows one section */
 body:not([data-page="home"]) .hero,body:not([data-page="home"]) .pills,body:not([data-page="home"]) .ticker{display:none}
