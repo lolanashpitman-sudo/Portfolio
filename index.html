@@ -109,6 +109,7 @@ body[data-page="home"] .hero h1{grid-area:name;align-self:start}
 body[data-page="home"] .hero h1 .l2{padding-left:clamp(12px,3vw,60px)}
 body[data-page="home"] .hero .intro{display:contents}
 body[data-page="home"] .homebio{grid-area:bio;align-self:start;justify-self:end;max-width:clamp(560px,48vw,1100px)}
+@media(min-width:901px){body[data-page="home"] .hero .intro .homebio p{text-align:justify;hyphens:auto;max-width:none}body[data-page="home"] .hero .intro .homebio p:last-child{margin-bottom:0}}
 body[data-page="home"] .homenav{grid-area:nav;flex-direction:row;flex-wrap:nowrap;justify-content:space-between;width:100%;max-width:none;gap:16px;margin-top:clamp(28px,4vw,56px);padding-top:clamp(14px,1.6vw,20px);border-top:1px solid var(--line)}
 body[data-page="home"] .homenav a,body[data-page="home"] .homenav a:first-child{border:0;padding:6px 0}
 body[data-page="home"] .homenav a:hover,body[data-page="home"] .homenav a:focus-visible{transform:translateY(-2px)}
@@ -647,6 +648,7 @@ function showPage(name){
   if (nav.scrollWidth > nav.clientWidth) nav.scrollLeft = on ? on.offsetLeft - (nav.clientWidth - on.offsetWidth) / 2 : 0;
   document.title = name === "home" ? "Lola Pitman — Portfolio" : `${TITLES[name]} — Lola Pitman`;
   if (name === "work" && typeof layoutGrid === "function") requestAnimationFrame(layoutGrid);
+  requestAnimationFrame(() => typeof fitHome === "function" && fitHome());
 }
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
@@ -658,6 +660,34 @@ $("#tick").innerHTML = [...words, ...words, ...words, ...words].map(w => `<span>
 const tick = () => $("#clock").textContent = "NOLA " + new Date().toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",timeZone:"America/Chicago"});
 tick(); setInterval(tick, 30000);
 $("#yr").textContent = new Date().getFullYear();
+
+/* homepage (computers): LOLA PITMAN and the bio are matching blocks, same width and same height */
+function fitHome(){
+  const hero = $(".hero"), h1 = $(".hero h1"), bio = $(".homebio"), ps = [...bio.querySelectorAll("p")], lead = bio.querySelector(".lead");
+  const reset = () => { hero.style.gridTemplateColumns = hero.style.justifyContent = ""; h1.style.fontSize = h1.style.width = ""; bio.style.width = bio.style.maxWidth = ""; ps.forEach(p => p.style.fontSize = ""); if (lead) lead.style.fontSize = ""; };
+  if (document.body.dataset.page !== "home" || innerWidth <= 900) { reset(); return; }
+  const cs = getComputedStyle(hero), inner = hero.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  const gap = Math.max(32, Math.min(96, innerWidth * .05));
+  // name width per px of font size
+  h1.style.width = "max-content"; h1.style.fontSize = "100px";
+  const ratio = h1.getBoundingClientRect().width / 100;
+  const fontCap = Math.min(innerHeight * .27, 300);
+  const font = Math.min((inner - gap) / 2 / ratio, fontCap);
+  h1.style.fontSize = font + "px";
+  const colW = Math.round(h1.getBoundingClientRect().width);
+  h1.style.width = "";
+  hero.style.gridTemplateColumns = `${colW}px ${colW}px`;
+  hero.style.justifyContent = "space-between";
+  bio.style.maxWidth = "none"; bio.style.width = colW + "px";
+  const target = h1.getBoundingClientRect().height;
+  // largest bio text size whose block is no taller than the name
+  let lo = 10, hi = 40;
+  const setF = f => { ps.forEach(p => p.style.fontSize = f + "px"); if (lead) lead.style.fontSize = (f * 1.55) + "px"; };
+  for (let k = 0; k < 18; k++) { const mid = (lo + hi) / 2; setF(mid); (bio.getBoundingClientRect().height <= target ? lo = mid : hi = mid); }
+  setF(lo);
+}
+let fitT; addEventListener("resize", () => { clearTimeout(fitT); fitT = setTimeout(fitHome, 60); });
+document.fonts && document.fonts.ready.then(fitHome);
 
 /* project cards */
 const grid = $("#grid");
