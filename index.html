@@ -689,7 +689,7 @@ function fitHome(){
   for (let k = 0; k < 18; k++) { const mid = (lo + hi) / 2; setF(mid); (bio.getBoundingClientRect().height <= target ? lo = mid : hi = mid); }
   setF(lo);
 }
-let fitT; addEventListener("resize", () => { clearTimeout(fitT); fitT = setTimeout(fitHome, 60); });
+let fitT; addEventListener("resize", () => { if (innerWidth <= 900) return; clearTimeout(fitT); fitT = setTimeout(fitHome, 60); });
 document.fonts && document.fonts.ready.then(fitHome);
 
 /* project cards */
@@ -718,12 +718,14 @@ const cards = [...grid.children];
 function layoutGrid(){
   const n = innerWidth > 1000 ? 3 : innerWidth > 640 ? 2 : 1;
   const cols = Array.from({length:n}, () => Object.assign(document.createElement("div"), {className:"col"}));
+  const keepY = scrollY; grid.style.minHeight = grid.offsetHeight + "px";
   grid.replaceChildren(...cols);
   cards.forEach(c => {
     if (c.hidden) { cols[0].appendChild(c); return; }
     const k = cols.reduce((m, col, j) => col.offsetHeight < cols[m].offsetHeight ? j : m, 0);
     cols[k].appendChild(c);
   });
+  grid.style.minHeight = ""; if (Math.abs(scrollY - keepY) > 1) scrollTo(0, keepY);
 }
 layoutGrid();
 Promise.all(cards.map(c => c.querySelector("img").decode().catch(()=>{}))).then(layoutGrid);
@@ -795,9 +797,11 @@ function layoutShots(shots){
     const im = b.querySelector("img"), r = im.naturalWidth ? im.naturalHeight/im.naturalWidth : 1;
     const k = h.indexOf(Math.min(...h)); cols[k].appendChild(b); h[k] += r + .05;
   });
+  const keepH = shots.offsetHeight; shots.style.minHeight = keepH + "px";
   shots.replaceChildren(...cols);
+  shots.style.minHeight = "";
 }
-let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { layoutGrid(); const s = $("#pvbody .shots"); if (s && s._btns) layoutShots(s); }, 150); });
+let rz, lastW = innerWidth; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (innerWidth === lastW) return; lastW = innerWidth; layoutGrid(); const s = $("#pvbody .shots"); if (s && s._btns) layoutShots(s); }, 150); });
 addEventListener("hashchange", route);
 $("#pvbody").addEventListener("click", e => { const b = e.target.closest("button[data-j]"); if (b) openLb(+b.dataset.j); });
 
