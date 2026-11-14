@@ -232,11 +232,19 @@ section.wrap{padding-top:clamp(20px,3vw,36px)}
 .pv .desc .credit{color:var(--ink);margin-top:1.4em}
 .pv .bannershot{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;margin:0 0 clamp(12px,1.6vw,22px)}
 .pv .bannershot img{width:100%;height:auto;display:block}
+.psec{display:flex;align-items:baseline;gap:14px;border-top:1px solid var(--line);padding-top:clamp(16px,2vw,24px);margin:clamp(8px,2vw,20px) 0 clamp(16px,2.4vw,32px)}
+.psec .lab{color:var(--acid)}
+.psec h3{margin:0;font-weight:900;text-transform:uppercase;line-height:.9;font-variation-settings:"wdth" 70;font-size:clamp(28px,3.4vw,52px)}
+.pv .shots + .psec{margin-top:clamp(40px,6vw,88px)}
+.psec-text{margin:0 0 clamp(18px,2.4vw,32px);max-width:62ch;color:#d6d2cb;font-size:clamp(16px,1.35vw,19px);line-height:1.5}
+.socialrows{display:flex;flex-direction:column;gap:clamp(12px,1.6vw,22px);padding-bottom:40px}
+.srow{display:flex;gap:clamp(12px,1.6vw,22px)}
+.sitem{min-width:0;background:var(--bg2)}
+.sitem img,.sitem video{display:block;width:100%;height:auto;object-fit:cover}
+@media(max-width:640px){.srow{flex-direction:column}.sitem{flex:none!important}}
 .floaty{position:relative;height:clamp(460px,58vw,760px);margin:0 0 clamp(28px,4vw,56px);overflow:hidden}
-.floaty img{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:auto;transform:translate(-50%,-50%) rotate(var(--r));animation:floaty var(--t) ease-in-out var(--d) infinite alternate;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
-@keyframes floaty{from{translate:0 -12px;rotate:-1.5deg}to{translate:0 14px;rotate:1.5deg}}
+.floaty img{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:auto;transform:translate(-50%,-50%) rotate(var(--r));filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
 @media(max-width:640px){.floaty{height:560px}.floaty img{left:var(--mx);top:var(--my);width:var(--mw)}}
-@media(prefers-reduced-motion:reduce){.floaty img{animation:none}}
 .pv .shots{display:flex;gap:clamp(12px,1.6vw,22px);align-items:flex-start;padding-bottom:40px}
 .pv .shots .col{flex:1;min-width:0;display:flex;flex-direction:column;gap:clamp(12px,1.6vw,22px)}
 .pv .shots button{display:block;width:100%;padding:0;border:0;background:var(--bg2);cursor:zoom-in}
@@ -350,6 +358,15 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;p
 const PROJECTS = [
   { slug:"crawfest-2027", title:"Crawfest \u201927", kind:"brand", cover:"hoodie.jpg", role:"Marketing Director · In progress",
     images:["logo-cutout.jpg","hoodie.jpg","palette.jpg"], banner:"logo-cutout.jpg",
+    sections:["Brand guidelines", "Social media & collaborations"],
+    social:{
+      text:"Content from our fall merch drop, made in collaboration with AdWorks and TUFASH at Tulane: behind the scenes at the shoot, the new hoodies out on campus, and our handcut assets turned into stickers.",
+      /* each row's items share one height; r = width / height, so nothing is cropped */
+      rows:[
+        [ {v:"social/video-1.mp4", poster:"social/video-1-poster.jpg", r:9/16}, {v:"social/video-2.mp4", poster:"social/video-2-poster.jpg", r:9/16}, {src:"social/photo-2.jpg", r:3/4} ],
+        [ {src:"social/photo-1.jpg", r:4/3}, {src:"social/photo-3.jpg", r:4/3}, {src:"social/photo-4.jpg", r:4/3} ]
+      ]
+    },
     /* floating cutouts on black: x/y = centre (%), w = width (% of section), r = tilt; m* = phone layout */
     float:[
       { src:"float-tagline.png", x:50, y:48, w:44, r:-3, mx:50, my:46, mw:84 },
@@ -777,9 +794,15 @@ function route(){
       <div><span class="lab" style="color:var(--acid)">${esc(KIND[p.kind]||p.kind)}</span><h2>${esc(p.title)}</h2>${p.role?`<span class="lab" style="display:block;margin-top:16px;color:var(--ink)">${esc(p.role)}</span>`:""}</div>
       <div class="desc">${p.desc.split("\n\n").map(t => `<p>${esc(t)}</p>`).join("")}${p.credit ? `<p class="credit lab">${esc(p.credit)}</p>` : ""}</div>
     </header>
+    ${p.sections ? `<div class="psec"><span class="lab">01</span><h3>${esc(p.sections[0])}</h3></div>` : ""}
     ${p.float ? `<div class="floaty" aria-label="${esc(p.title)} brand assets">${p.float.map((f,k) => `<img src="${src(p,f.src)}" alt="" style="--x:${f.x}%;--y:${f.y}%;--w:${f.w}%;--r:${f.r}deg;--mx:${f.mx}%;--my:${f.my}%;--mw:${f.mw}%;--d:${(-k*1.3).toFixed(1)}s;--t:${(6+k%3).toFixed(1)}s">`).join("")}</div>` : ""}
     ${p.banner ? `<button class="bannershot" data-j="${p.images.indexOf(p.banner)}" aria-label="View ${esc(p.title)} logo"><img src="${src(p,p.banner)}" alt="${esc(p.title)} logo"></button>` : ""}
     <div class="shots">${p.images.map((f,j) => f === p.banner ? "" : `<button data-j="${j}" aria-label="View image ${j+1} of ${p.images.length}"><img src="${src(p,f)}" alt="${esc(p.title)}, image ${j+1}"></button>`).join("")}</div>
+    ${p.social ? `<div class="psec"><span class="lab">02</span><h3>${esc(p.sections[1])}</h3></div>
+      ${p.social.text ? `<p class="psec-text">${esc(p.social.text)}</p>` : ""}
+      <div class="socialrows">${p.social.rows.map(row => `<div class="srow">${row.map(m => m.v
+        ? `<div class="sitem" style="flex:${m.r}"><video src="${src(p,m.v)}" poster="${src(p,m.poster)}" muted autoplay loop playsinline preload="metadata" style="aspect-ratio:${m.r}"></video></div>`
+        : `<div class="sitem" style="flex:${m.r}"><img src="${src(p,m.src)}" alt="${esc(p.title)} social content" loading="lazy" style="aspect-ratio:${m.r}"></div>`).join("")}</div>`).join("")}</div>` : ""}
     <a class="next" href="#/${esc(nx.slug)}"><span class="lab">Next project →</span><b>${esc(nx.title)}</b></a>
     ${endNav("").outerHTML}`;
   pv.classList.add("open"); document.body.style.overflow="hidden"; pv.scrollTop = 0;
