@@ -242,9 +242,9 @@ section.wrap{padding-top:clamp(20px,3vw,36px)}
 .sitem{min-width:0;background:var(--bg2)}
 .sitem img,.sitem video{display:block;width:100%;height:auto;object-fit:cover}
 @media(max-width:640px){.srow{flex-direction:column}.sitem{flex:none!important}}
-.floaty{position:relative;height:clamp(460px,58vw,760px);margin:0 0 clamp(28px,4vw,56px);overflow:hidden}
+.floaty{position:relative;aspect-ratio:3/2;margin:0 0 clamp(28px,4vw,56px);overflow:hidden}
 .floaty img{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:auto;transform:translate(-50%,-50%) rotate(var(--r));filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
-@media(max-width:640px){.floaty{height:560px}.floaty img{left:var(--mx);top:var(--my);width:var(--mw)}}
+@media(max-width:640px){.floaty{aspect-ratio:auto;height:560px}.floaty img{left:var(--mx);top:var(--my);width:var(--mw)}}
 .pv .shots{display:flex;gap:clamp(12px,1.6vw,22px);align-items:flex-start;padding-bottom:40px}
 .pv .shots .col{flex:1;min-width:0;display:flex;flex-direction:column;gap:clamp(12px,1.6vw,22px)}
 .pv .shots button{display:block;width:100%;padding:0;border:0;background:var(--bg2);cursor:zoom-in}
@@ -357,10 +357,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;p
 <script>
 const PROJECTS = [
   { slug:"crawfest-2027", title:"Crawfest \u201927", kind:"brand", cover:"hoodie.jpg", role:"Marketing Director · In progress",
-    images:["logo-cutout.jpg","hoodie.jpg","palette.jpg"], banner:"logo-cutout.jpg",
-    sections:["Brand guidelines", "Social media & collaborations"],
+    images:["logo-cutout.jpg","palette.jpg","hoodie.jpg"], banner:"logo-cutout.jpg",
+    sections:["Brand guidelines", "Fall Merchandise Drop"],
     social:{
-      text:"Content from our fall merch drop, made in collaboration with AdWorks and TUFASH at Tulane: behind the scenes at the shoot, the new hoodies out on campus, and our handcut assets turned into stickers.",
+      hero:"hoodie.jpg",
+      text:"For our fall merch drop, we teamed up with AdWorks and TU Fashion, Tulane\u2019s student ad agency and fashion organization. The content covers the whole drop: behind the scenes at the shoot, the new hoodies out on campus, and our hand-cut designs turned into stickers.",
       /* each row's items share one height; r = width / height, so nothing is cropped */
       rows:[
         [ {v:"social/video-1.mp4", poster:"social/video-1-poster.jpg", r:9/16}, {v:"social/video-2.mp4", poster:"social/video-2-poster.jpg", r:9/16}, {src:"social/photo-2.jpg", r:3/4} ],
@@ -369,14 +370,14 @@ const PROJECTS = [
     },
     /* floating cutouts on black: x/y = centre (%), w = width (% of section), r = tilt; m* = phone layout */
     float:[
-      { src:"float-tagline.png", x:50, y:48, w:44, r:-3, mx:50, my:46, mw:84 },
-      { src:"float-lobster.png", x:17, y:24, w:24, r:-9, mx:28, my:14, mw:46 },
-      { src:"float-fleur.png",   x:84, y:22, w:11, r:8,  mx:82, my:15, mw:22 },
-      { src:"float-trumpet.png", x:20, y:80, w:25, r:-7, mx:28, my:84, mw:44 },
-      { src:"float-gator.png",   x:80, y:76, w:22, r:6,  mx:76, my:80, mw:40 },
+      { src:"float-tagline.png", x:50, y:50, w:44, r:-3, mx:50, my:47, mw:84 },
+      { src:"float-lobster.png", x:15, y:17, w:24, r:-9, mx:28, my:14, mw:46 },
+      { src:"float-fleur.png",   x:86, y:17, w:11, r:8,  mx:82, my:15, mw:22 },
+      { src:"float-trumpet.png", x:16, y:84, w:25, r:-7, mx:28, my:84, mw:44 },
+      { src:"float-gator.png",   x:84, y:82, w:22, r:6,  mx:76, my:81, mw:40 },
     ],
     blurb:"In progress: leading a five-person board toward a more distinct brand, with handcut type and a jazz New Orleans feel.",
-    desc:"As Marketing Director for Crawfest 2027, I lead a five-person board across design, social, PR, web, and photo and video. In collaboration with designers Cecelia Fernandez and Bianca Martinez, the brand guidelines for Crawfest 2027 came to life. We\u2019re also preparing our fall merch drop, updating the website, and running Instagram on a planned content timeline.\n\nThe creative goal this year is to feel a little more distinct, with a jazz-inflected New Orleans vibe. Inspired by the city\u2019s tradition of poster making and folk art, which is messy, often misprinted, and undeniably human, the design focuses on handcut and scanned letterforms and symbols.\n\nBelow are our merch mockup, our logo, our tagline, \u201cEat Louisiana Crawfish,\u201d the color palette, and a few of our handcut assets. This work is in progress and not final." },
+    desc:"As Marketing Director for Crawfest 2027, I lead a five-person board across design, social, PR, web, and photo and video. In collaboration with designers Cecelia Fernandez and Bianca Martinez, the brand guidelines for Crawfest 2027 came to life. We\u2019re also preparing our fall merch drop, updating the website, and running Instagram on a planned content timeline.\n\nThe creative goal this year is to feel a little more distinct, with a jazz-inflected New Orleans vibe. Inspired by the city\u2019s tradition of poster making and folk art, which is messy, often misprinted, and undeniably human, the design focuses on handcut and scanned letterforms and symbols.\n\nBelow are our brand guidelines, including our logo, our tagline, \u201cEat Louisiana Crawfish,\u201d the color palette, and a few of our handcut assets, followed by our fall merch drop. This work is in progress and not final." },
   { slug:"blackbird-labs", title:"Blackbird Labs", kind:"brand", cover:"cover.jpg", role:"Loyalty & Experiential Intern · Summer 2026 · New York",
     images:["05.jpg","01.jpg","03.jpg","04.jpg","02.jpg","06.jpg"],
     blurb:"Loyalty & experiential at the rewards company for people who love restaurants. Brand mockups in Figma.",
@@ -421,6 +422,7 @@ const PROJECTS = [
 
 /* Substack essays, newest first. "img" is a file in images/writing/ (leave "" for a type-only card). */
 const ESSAYS = [
+  {"title": "Grandfather Time", "sub": "and his suede jacket", "date": "Nov 16, 2026", "url": "https://lolapitman.substack.com/p/grandfather-time", "img": "grandfather-time.jpg"},
   {"title": "Pillow Talk or Panopticism?", "sub": "and the digitization of vulnerability", "date": "Oct 23, 2026", "url": "https://lolapitman.substack.com/p/pillow-talk-or-panopticism", "img": "pillow-talk-or-panopticism.jpg"},
   {"title": "Salty Air, 70, and Sunny", "sub": "a renaissance of Swimming by Mac Miller", "date": "Oct 20, 2026", "url": "https://lolapitman.substack.com/p/salty-air-70-and-sunny", "img": "salty-air-70-and-sunny.jpg"},
   {"title": "If Fordism Perfected Standardization, Then I Want the Keys to Flora-bama.", "sub": "", "date": "Oct 8, 2026", "url": "https://lolapitman.substack.com/p/if-fordism-perfected-standardization", "img": "if-fordism-perfected-standardization.jpg"},
@@ -797,9 +799,10 @@ function route(){
     ${p.sections ? `<div class="psec"><span class="lab">01</span><h3>${esc(p.sections[0])}</h3></div>` : ""}
     ${p.float ? `<div class="floaty" aria-label="${esc(p.title)} brand assets">${p.float.map((f,k) => `<img src="${src(p,f.src)}" alt="" style="--x:${f.x}%;--y:${f.y}%;--w:${f.w}%;--r:${f.r}deg;--mx:${f.mx}%;--my:${f.my}%;--mw:${f.mw}%;--d:${(-k*1.3).toFixed(1)}s;--t:${(6+k%3).toFixed(1)}s">`).join("")}</div>` : ""}
     ${p.banner ? `<button class="bannershot" data-j="${p.images.indexOf(p.banner)}" aria-label="View ${esc(p.title)} logo"><img src="${src(p,p.banner)}" alt="${esc(p.title)} logo"></button>` : ""}
-    <div class="shots">${p.images.map((f,j) => f === p.banner ? "" : `<button data-j="${j}" aria-label="View image ${j+1} of ${p.images.length}"><img src="${src(p,f)}" alt="${esc(p.title)}, image ${j+1}"></button>`).join("")}</div>
+    <div class="shots">${p.images.map((f,j) => (f === p.banner || f === p.social?.hero) ? "" : `<button data-j="${j}" aria-label="View image ${j+1} of ${p.images.length}"><img src="${src(p,f)}" alt="${esc(p.title)}, image ${j+1}"></button>`).join("")}</div>
     ${p.social ? `<div class="psec"><span class="lab">02</span><h3>${esc(p.sections[1])}</h3></div>
       ${p.social.text ? `<p class="psec-text">${esc(p.social.text)}</p>` : ""}
+      ${p.social.hero ? `<button class="bannershot" data-j="${p.images.indexOf(p.social.hero)}" aria-label="View ${esc(p.title)} merch mockup"><img src="${src(p,p.social.hero)}" alt="${esc(p.title)} hoodie mockup, front and back"></button>` : ""}
       <div class="socialrows">${p.social.rows.map(row => `<div class="srow">${row.map(m => m.v
         ? `<div class="sitem" style="flex:${m.r}"><video src="${src(p,m.v)}" poster="${src(p,m.poster)}" muted autoplay loop playsinline preload="metadata" style="aspect-ratio:${m.r}"></video></div>`
         : `<div class="sitem" style="flex:${m.r}"><img src="${src(p,m.src)}" alt="${esc(p.title)} social content" loading="lazy" style="aspect-ratio:${m.r}"></div>`).join("")}</div>`).join("")}</div>` : ""}
@@ -813,7 +816,7 @@ function route(){
 }
 /* masonry that keeps reading order: each image goes into the currently shortest column */
 function layoutShots(shots){
-  const btns = shots._btns, n = innerWidth > 760 ? 2 : 1;
+  const btns = shots._btns, n = innerWidth > 760 && btns.length > 1 ? 2 : 1;
   const cols = Array.from({length:n}, () => Object.assign(document.createElement("div"), {className:"col"}));
   const h = new Array(n).fill(0);
   btns.forEach(b => {
